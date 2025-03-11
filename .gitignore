@@ -1,0 +1,12 @@
+old_sessions.json
+bin
+.vscode
+.idea
+sessions
+.env
+p.txt
+messages.csv
+config.yaml
+new_oldSessions.json
+oldSessions.json
+sessions.json

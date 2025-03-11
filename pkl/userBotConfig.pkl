@@ -1,0 +1,49 @@
+@go.Package { name = "github.com/HoneySinghDev/tg-fake-group-conversation-userbot/pkl/pklgen" }
+
+module userBotConfig.pkl
+
+import "package://pkg.pkl-lang.org/pkl-go/pkl.golang@0.5.3#/go.pkl"
+
+UserBot: UserBotConfig
+Settings: SettingsConfig
+Groups: List<GroupConfig>(this.length > 0)
+AllowedMedia: AllowedMediaConfig
+
+class UserBotConfig {
+  apiId: Int
+  apiHash: String
+
+  mainPhoneNumber: String(this.matches(Regex("^[0-9]{10,13}$")))
+  sessionsFilePath: String(this.endsWith(".json"))
+}
+
+class SettingsConfig {
+  sourceType: GroupType
+  sourceFile: String?(if (sourceType == "file") this != null else this == null)
+  proxyFilePath: String(this.endsWith(".csv"))
+  MinintervalTime: Duration(this >= 10.s) = 10.s
+  MaxintervalTime: Duration(this >= 10.s) = 30.s
+  TypingAction: Boolean = true
+  ReloadInterval: Duration(this >= 10.s) = 30.s
+}
+
+class GroupConfig {
+  sourceID: Number
+  sourceUsername: String
+  targetID: Number
+  targetUsername: String
+}
+
+class AllowedMediaConfig {
+  photo: Boolean = true
+  video: Boolean = true
+  audio: Boolean = true
+  document: Boolean = true
+  sticker: Boolean = true
+  gif: Boolean = true
+  contact: Boolean = true
+  voice: Boolean = true
+}
+
+typealias SessionType = "native"|"string"|"tdata"|"telethon"|"pyrogram"
+typealias GroupType = "group"|"file"

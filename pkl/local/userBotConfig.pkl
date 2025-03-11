@@ -1,0 +1,26 @@
+amends "../userBotConfig.pkl"
+
+UserBot {
+  apiId = 1558897
+  apiHash = "22cef8c309dc02618e7ed494f55cd211"
+  mainPhoneNumber = "916352885021"
+  sessionsFilePath = "./sessions.json"
+}
+
+Settings {
+  sourceType = "file"
+  proxyFilePath = "./proxy.csv"
+  MinintervalTime = 2.min
+  MaxintervalTime = 5.min
+  sourceFile = "messages.csv"
+  TypingAction = false
+}
+
+Groups = List(
+    new GroupConfig {
+      sourceID = -1001460936873
+      sourceUsername = "testtipgroup"
+      targetID = -1001460936873
+      targetUsername = "testtipgroup"
+    }
+  )
